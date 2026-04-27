@@ -3,9 +3,11 @@ import shutil
 import subprocess
 import sys
 
+
 def check_uv() -> bool:
     """Check if uv is installed and available in PATH."""
     return shutil.which("uv") is not None
+
 
 def install_uv() -> None:
     """Try to install uv using pip."""
@@ -14,8 +16,11 @@ def install_uv() -> None:
         subprocess.run([sys.executable, "-m", "pip", "install", "uv"], check=True)
         print("uv installed successfully.")
     except subprocess.CalledProcessError:
-        print("Failed to install uv automatically. Please install it manually: https://github.com/astral-sh/uv")
+        print(
+            "Failed to install uv automatically. Please install it manually: https://github.com/astral-sh/uv"
+        )
         sys.exit(1)
+
 
 def main() -> None:
     if len(sys.argv) < 2:
@@ -32,7 +37,7 @@ def main() -> None:
     if not check_uv():
         install_uv()
 
-    print(f"🚀 Creating project '{project_name}' from template...")
+    print(f"Creating project '{project_name}' from template...")
 
     # Clone template and remove .git to avoid conflicts
     subprocess.run(["git", "clone", template_url, project_name], check=True)
@@ -50,7 +55,7 @@ def main() -> None:
     # Initialize a new git repository
     subprocess.run(["git", "init"], cwd=project_name, check=True)
 
-    print(f"✅ Success! Your project is ready in ./{project_name}")
+    print(f"Success! Your project is ready in ./{project_name}")
     print(f"Next steps:\n  cd {project_name}\n  uv sync")
 
 

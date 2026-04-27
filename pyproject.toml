@@ -51,4 +51,4 @@ disallow_untyped_defs = false
 disallow_incomplete_defs = false
 
 [project.scripts]
-uv-init = "python_uv_template.cli:main"
+uv-init = "cli:main"

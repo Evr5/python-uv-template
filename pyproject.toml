@@ -1,18 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
-name = "my-uv-template"
+name = "python-uv-template"
 version = "0.1.0"
-description = "A simple Python template using uv"
+description = "A modern Python template using uv with Ruff and Pytest"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
+authors = [{ name = "Evr5", email = "ethanvr3@gmail.com" }]
+keywords = []
+dependencies = []
 
-authors = [
-    { name = "", email = "" },
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
 ]
 
-dependencies = [
-    "pytest>=9.0.1",
-]
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "C4"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

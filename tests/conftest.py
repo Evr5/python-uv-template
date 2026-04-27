@@ -1,3 +1,5 @@
+from typing import Generator
+
 import pytest
 
 # This file allows to define global fixtures or configure pytest.
@@ -5,7 +7,7 @@ import pytest
 
 
 @pytest.fixture(autouse=True)
-def setup_testing_env():
+def setup_testing_env() -> Generator[None, None, None]:
     """
     Fixture executed automatically before each test.
     Useful for configuring test environment variables or cleaning up resources.

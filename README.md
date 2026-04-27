@@ -69,6 +69,14 @@ uv run ruff check . --fix
 uv run ruff format .
 ```
 
+### Type Checking
+
+To check types with mypy:
+
+```bash
+uv run mypy .
+```
+
 ## Managing Dependencies
 
 Add a production dependency:

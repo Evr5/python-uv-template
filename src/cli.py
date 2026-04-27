@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import sys
 
+
 def main() -> None:
     if len(sys.argv) < 2:
         print("Usage: uv-init <project_name>")
@@ -34,6 +35,7 @@ def main() -> None:
 
     print(f"Success! Your project is ready in ./{project_name}")
     print(f"Next steps:\n  cd {project_name}\n  uv sync")
+
 
 if __name__ == "__main__":
     main()

@@ -2,15 +2,53 @@
 
 This repository provides a modern, high-performance template for Python projects using [uv](https://github.com/astral-sh/uv), an extremely fast Python package manager and environment tool.
 
-## Features
+## Getting Started
 
-- **Fast Dependency Management:** Powered by `uv` for near-instant installation.
-- **Modern Linting & Formatting:** Integrated with [Ruff](https://github.com/astral-sh/ruff) for lightning-fast code quality checks.
-- **Testing Suite:** Pre-configured with [pytest](https://docs.pytest.org).
-- **Strict Code Standards:** Includes `.editorconfig` and `.gitattributes` to ensure consistent formatting (LF line endings, UTF-8, 4-space indentation) across all OS and editors.
-- **Robust CI/CD:** GitHub Actions workflow that validates formatting, linting, and runs tests on every push to any branch.
+You can initialize a new project using this template in two ways, depending on your preferred package manager.
 
-## Quick Start
+### Method 1: Using uv (Recommended)
+
+If you already have `uv` installed, this is the fastest method:
+
+```bash
+# Install the CLI tool
+uv tool install git+https://github.com/Evr5/python-uv-template.git
+
+# Create your project
+uv-init my-new-project
+```
+
+### Method 2: Using pip
+
+If you don't have `uv` yet, `pip` will install it automatically as a dependency of the tool:
+
+```bash
+# Install the tool (will also install uv automatically)
+pip install git+https://github.com/Evr5/python-uv-template.git
+
+# Create your project
+uv-init my-new-project
+```
+
+### What happens next?
+
+When you run `uv-init`:
+
+1. It clones the template into your specified folder.
+2. It removes the template's git history to start fresh.
+3. It automatically renames the project in `pyproject.toml` to match your folder name.
+4. It initializes a new, clean Git repository for you.
+
+Once finished, simply run:
+
+```bash
+cd your-project-name
+uv sync
+```
+
+## Manual Installation
+
+If you prefer not to install the CLI tool, you can still use the template manually:
 
 ```bash
 # Clone the template
@@ -21,6 +59,14 @@ cd my-new-project
 uv sync
 uv run src/main.py
 ```
+
+## Features
+
+- **Fast Dependency Management:** Powered by `uv` for near-instant installation.
+- **Modern Linting & Formatting:** Integrated with [Ruff](https://github.com/astral-sh/ruff) for lightning-fast code quality checks.
+- **Testing Suite:** Pre-configured with [pytest](https://docs.pytest.org).
+- **Strict Code Standards:** Includes `.editorconfig` and `.gitattributes` to ensure consistent formatting (LF line endings, UTF-8, 4-space indentation) across all OS and editors.
+- **Robust CI/CD:** GitHub Actions workflow that validates formatting, linting, and runs tests on every push to any branch.
 
 ## Requirements
 
@@ -97,6 +143,8 @@ uv add --dev mypy
 project-root/
 ├── .github/workflows/ci.yml  # Multi-stage CI (Lint -> Test)
 ├── src/
+│   ├── __init__.py           # Makes src a package
+│   ├── cli.py                # CLI logic (uv-init)
 │   └── main.py               # Entry point
 ├── tests/
 │   ├── conftest.py           # Pytest configuration

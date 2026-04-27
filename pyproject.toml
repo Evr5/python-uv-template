@@ -10,7 +10,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 authors = [{ name = "Evr5", email = "ethanvr3@gmail.com" }]
 keywords = []
-dependencies = []
+dependencies = [
+    "uv>=0.1.0"
+]
 
 [dependency-groups]
 dev = [
